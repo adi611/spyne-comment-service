@@ -1,5 +1,8 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
@@ -16,6 +19,7 @@ export const protect = (req: any, res: Response, next: NextFunction) => {
     req.user = decoded;
     next();
   } catch (err) {
+    console.error("Error in authMiddleware:", err);
     res.status(401).json({ message: "Token is not valid" });
   }
 };

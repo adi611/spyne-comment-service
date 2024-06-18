@@ -3,8 +3,8 @@ import { TComment } from "../types/types";
 
 const commentSchema = new Schema<TComment>(
   {
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    discussion: {
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    discussionId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Discussion",
       required: true,
